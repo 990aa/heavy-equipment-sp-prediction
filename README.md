@@ -2,8 +2,6 @@
 
 Production Python package for predicting used heavy-equipment selling prices from transaction-level tabular data.
 
-The original Kaggle analysis remains in [`notebook.ipynb`](notebook.ipynb) as an exploratory record. The supported runtime path is the importable package under [`src/heavy_equipment_sp_prediction`](src/heavy_equipment_sp_prediction), which provides deterministic feature engineering, log-target regression, artifact persistence, and a small CLI.
-
 ## What it does
 
 - Parses dates and mixed-format equipment specifications.
@@ -34,8 +32,6 @@ uv sync --extra dev --extra competition
 
 ## Train and predict
 
-Training data must contain `TargetValue`; the default identifier is `TransactionID`.
-
 ```powershell
 uv run heavy-equipment-sp-prediction train data/train.csv --artifact artifacts/model.joblib
 uv run heavy-equipment-sp-prediction predict data/test.csv --artifact artifacts/model.joblib --output artifacts/submission.csv
@@ -64,10 +60,6 @@ uv run ruff format --check .
 ```
 
 Tests cover domain parsers, unseen categories, RMSLE, training, inference, and artifact round trips. Raw datasets, generated artifacts, and notebook checkpoints are excluded from version control.
-
-## Data contract
-
-The pipeline accepts arbitrary additional columns. Numeric columns are retained, date-like columns are decomposed, and other fields are normalized into compact categorical and string-shape features. Missing target values and negative targets are excluded from training. Predictions are clipped to the observed training target range.
 
 ## Project layout
 
