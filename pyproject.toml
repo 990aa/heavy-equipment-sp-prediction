@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "990aa", email = "099ahadabdul@gmail.com" }
 ]
-requires-python = ">=3.12,<3.15"
+requires-python = ">=3.15,<3.16"
 dependencies = [
     "joblib>=1.4,<2",
     "numpy>=2.0,<3",
